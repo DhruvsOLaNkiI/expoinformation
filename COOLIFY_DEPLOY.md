@@ -40,6 +40,19 @@ Optional runtime (email still works if only set at build):
 
 - `GET /api/health` — should return `{ "ok": true, "mongo": true }` when MongoDB is connected.
 
+### Form returns 503?
+
+That means **MongoDB is not connected** on the server. Common causes:
+
+1. `MONGODB_URI` not set in Coolify **runtime** env vars
+2. Still using `mongodb://127.0.0.1:27017` (only works on your PC — use **MongoDB Atlas** in production)
+3. Atlas **Network Access** does not allow your server IP (use `0.0.0.0/0` for testing)
+4. Wrong username/password in the connection string (URL-encode special characters in passwords)
+
+After redeploy, open `https://YOUR-URL/api/health` — if `"mongo": false`, fix `MONGODB_URI` and redeploy.
+
+**Note:** If Web3Forms is configured at build time, forms can still succeed via email when the database is down (after you deploy the latest code).
+
 ## 5. If build still fails
 
 - Increase server RAM (Nixpacks needs ~2GB+; Dockerfile needs much less).

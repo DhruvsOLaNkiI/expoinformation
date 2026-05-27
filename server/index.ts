@@ -5,7 +5,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { closeDb, getDb, isMongoConfigured } from "./db.js";
 
-dotenv.config();
+// Always load .env from project root (works even if terminal cwd is different)
+dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".env") });
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.resolve(__dirname, "..", "dist");
@@ -95,8 +96,12 @@ app.post("/api/register", async (req, res) => {
       id: String(id),
     });
   } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
     console.error("POST /api/register:", err);
-    res.status(500).json({ error: "Could not save registration. Please try again." });
+    res.status(500).json({
+      error: "Could not save registration. Please try again.",
+      detail: process.env.NODE_ENV !== "production" ? message : undefined,
+    });
   }
 });
 
@@ -149,8 +154,12 @@ app.post("/api/exhibitor", async (req, res) => {
       id: String(id),
     });
   } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
     console.error("POST /api/exhibitor:", err);
-    res.status(500).json({ error: "Could not save application. Please try again." });
+    res.status(500).json({
+      error: "Could not save application. Please try again.",
+      detail: process.env.NODE_ENV !== "production" ? message : undefined,
+    });
   }
 });
 

@@ -26,8 +26,18 @@ function isAccessKeyConfigured() {
   );
 }
 
-async function sendToWeb3Forms(payload: Record<string, string>) {
-  if (!isAccessKeyConfigured()) return;
+class ApiError extends Error {
+  status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+  }
+}
+
+async function sendToWeb3Forms(payload: Record<string, string>): Promise<boolean> {
+  if (!isAccessKeyConfigured()) return false;
 
   const res = await fetch(WEB3FORMS_URL, {
     method: "POST",
@@ -41,8 +51,10 @@ async function sendToWeb3Forms(payload: Record<string, string>) {
   const data = (await res.json().catch(() => ({}))) as { success?: boolean; message?: string };
 
   if (!res.ok || !data.success) {
-    console.warn("Web3Forms email failed:", data.message);
+    throw new Error(data.message || "Could not send your registration email. Please try again.");
   }
+
+  return true;
 }
 
 async function saveToApi(endpoint: string, body: Record<string, string>) {
@@ -52,14 +64,45 @@ async function saveToApi(endpoint: string, body: Record<string, string>) {
     body: JSON.stringify(body),
   });
 
-  const data = (await res.json().catch(() => ({}))) as { success?: boolean; error?: string; message?: string };
+  const data = (await res.json().catch(() => ({}))) as {
+    success?: boolean;
+    error?: string;
+    message?: string;
+    detail?: string;
+  };
 
   if (!res.ok || !data.success) {
-    throw new Error(
+    const base =
       data.error ||
-        (res.status === 503
-          ? "Database not available. Start the API with npm run dev:api and set MONGODB_URI in .env"
-          : "Could not save your submission. Please try again.")
+      (res.status === 503
+        ? "Database not available. Run npm run dev:api in a second terminal."
+        : "Could not save your submission. Please try again.");
+    const hint = data.detail ? ` (${data.detail})` : "";
+    throw new ApiError(`${base}${hint}`, res.status);
+  }
+}
+
+/** Saves to MongoDB when available; falls back to Web3Forms email if DB returns 503. */
+async function submitRegistration(
+  apiEndpoint: string,
+  apiBody: Record<string, string>,
+  emailPayload: Record<string, string>
+) {
+  let savedToDb = false;
+
+  try {
+    await saveToApi(apiEndpoint, apiBody);
+    savedToDb = true;
+  } catch (err) {
+    const isDbDown = err instanceof ApiError && err.status === 503;
+    if (!isDbDown) throw err;
+  }
+
+  const emailed = await sendToWeb3Forms(emailPayload);
+
+  if (!savedToDb && !emailed) {
+    throw new Error(
+      "Registration could not be completed. The server database is not connected (set MONGODB_URI in Coolify), and email is not configured. Please contact support."
     );
   }
 }
@@ -127,25 +170,28 @@ function VisitorForm({ onClose }: { onClose: () => void }) {
     const message = String(form.get("message") ?? "");
 
     try {
-      await saveToApi("/api/register", {
-        fullName,
-        email,
-        phone,
-        city,
-        interestType,
-        message,
-      });
-      await sendToWeb3Forms({
-        subject: `DB Expo — Visitor Registration: ${fullName}`,
-        from_name: fullName,
-        email,
-        replyto: email,
-        phone,
-        city,
-        interest_type: interestType,
-        message: message || "-",
-        form_type: "Visitor Registration",
-      });
+      await submitRegistration(
+        "/api/register",
+        {
+          fullName,
+          email,
+          phone,
+          city,
+          interestType,
+          message,
+        },
+        {
+          subject: `DB Expo — Visitor Registration: ${fullName}`,
+          from_name: fullName,
+          email,
+          replyto: email,
+          phone,
+          city,
+          interest_type: interestType,
+          message: message || "-",
+          form_type: "Visitor Registration",
+        }
+      );
       setStatus("success");
     } catch (err) {
       setStatus("error");
@@ -259,31 +305,34 @@ function ExhibitorForm({ onClose }: { onClose: () => void }) {
       const boothPreference = String(form.get("boothPreference") ?? "");
       const message = String(form.get("message") ?? "");
 
-      await saveToApi("/api/exhibitor", {
-        companyName,
-        contactName,
-        email: businessEmail,
-        phone,
-        companyType,
-        website,
-        projectsCount,
-        boothPreference,
-        message,
-      });
-      await sendToWeb3Forms({
-        subject: `DB Expo — Exhibitor Application: ${companyName}`,
-        from_name: contactName,
-        email: businessEmail,
-        replyto: businessEmail,
-        phone,
-        company_name: companyName,
-        company_type: companyType,
-        website: website || "-",
-        projects_count: projectsCount || "-",
-        booth_preference: boothPreference || "-",
-        message: message || "-",
-        form_type: "Exhibitor Application",
-      });
+      await submitRegistration(
+        "/api/exhibitor",
+        {
+          companyName,
+          contactName,
+          email: businessEmail,
+          phone,
+          companyType,
+          website,
+          projectsCount,
+          boothPreference,
+          message,
+        },
+        {
+          subject: `DB Expo — Exhibitor Application: ${companyName}`,
+          from_name: contactName,
+          email: businessEmail,
+          replyto: businessEmail,
+          phone,
+          company_name: companyName,
+          company_type: companyType,
+          website: website || "-",
+          projects_count: projectsCount || "-",
+          booth_preference: boothPreference || "-",
+          message: message || "-",
+          form_type: "Exhibitor Application",
+        }
+      );
       setStatus("success");
     } catch (err) {
       setStatus("error");

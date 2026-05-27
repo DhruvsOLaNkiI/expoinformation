@@ -18,8 +18,14 @@ View your app in AI Studio: https://ai.studio/apps/257be289-3756-4288-94fe-db54e
 
 1. Install dependencies: `npm install`
 2. **Form email (Web3Forms):** follow [WEB3FORMS_SETUP.md](WEB3FORMS_SETUP.md) — get a free key at https://web3forms.com and add it to `.env` as `VITE_WEB3FORMS_ACCESS_KEY`
-3. Run the app: `npm run dev`
-4. Open http://localhost:3000 and test **Register** / **Become an Exhibitor** forms
+3. Run **both** servers (forms need the API on port 3001):
+   - Terminal 1: `npm run dev:api`
+   - Terminal 2: `npm run dev`
+   - Or one command: `npm run dev:all`
+4. Check API: http://localhost:3001/api/health → should show `"mongo": true`
+5. Open http://localhost:3000 and test **Register** / **Become an Exhibitor** forms
+
+**If you only run `npm run dev`**, form submit will fail (500/503) because the database API is not running.
 
 ## Deploy on Coolify
 
