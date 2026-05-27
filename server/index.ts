@@ -1,10 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
+import { existsSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { closeDb, getDb, isMongoConfigured } from "./db.js";
 
 dotenv.config();
 
-const PORT = Number(process.env.API_PORT) || 3001;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distPath = path.resolve(__dirname, "..", "dist");
+
+// Coolify sets PORT; local API uses API_PORT
+const PORT = Number(process.env.PORT) || Number(process.env.API_PORT) || 3001;
 
 const app = express();
 
@@ -147,9 +154,18 @@ app.post("/api/exhibitor", async (req, res) => {
   }
 });
 
-const server = app.listen(PORT, () => {
+// Production: serve Vite build + SPA routes (react-router)
+if (existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get(/^(?!\/api).*/, (_req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+}
+
+const server = app.listen(PORT, "0.0.0.0", () => {
   const mongoStatus = isMongoConfigured() ? "MongoDB enabled" : "MongoDB not configured (set MONGODB_URI)";
-  console.log(`DB Expo API running on http://localhost:${PORT} — ${mongoStatus}`);
+  const staticStatus = existsSync(distPath) ? "serving /dist" : "API only (run npm run build for static site)";
+  console.log(`DB Expo running on http://0.0.0.0:${PORT} — ${mongoStatus} — ${staticStatus}`);
 });
 
 process.on("SIGINT", async () => {

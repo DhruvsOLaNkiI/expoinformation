@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+coverage
+data/*.json
+.cursor
+agent-transcripts
+README.md
+WEB3FORMS_SETUP.md
+COOLIFY_DEPLOY.md
