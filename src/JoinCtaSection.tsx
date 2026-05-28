@@ -49,7 +49,7 @@ export function JoinCtaSection({ onRegister }: JoinCtaSectionProps) {
             onClick={onRegister}
             className="w-full bg-[#f26522] text-white py-4 font-black rounded-lg shadow-xl hover:bg-[#d9561c] transition-colors flex items-center justify-center text-lg uppercase tracking-wide"
           >
-            REGISTER NOW <ChevronRight className="ml-2 w-6 h-6" />
+            PRE-REGISTRATION <ChevronRight className="ml-2 w-6 h-6" />
           </button>
         </div>
 

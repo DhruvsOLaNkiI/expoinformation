@@ -10,6 +10,7 @@ import { ImageGallerySlider } from "./ImageGallerySlider";
 import { RegistrationForms } from "./RegistrationForms";
 import { SiteHeader } from "./SiteHeader";
 import { JoinCtaSection } from "./JoinCtaSection";
+import { Logo } from "./Logo";
 
 const exploreFeatures = [
   { id: 1, icon: Home, title: "Explore Premium\nReal Estate Projects" },
@@ -39,7 +40,7 @@ const whyReasons = [
 
 const bottomStats = [
   { id: 1, icon: Users, value: "500+", label: "EXPECTED\nVISITORS" },
-  { id: 2, icon: Home, value: "40", label: "PAVILIONS" },
+  { id: 2, icon: Home, value: "60", label: "PAVILIONS" },
   { id: 3, icon: Building2, value: "100+", label: "PROJECTS" },
   { id: 4, icon: Briefcase, value: "50+", label: "DEVELOPERS" },
   { id: 5, icon: Landmark, value: "20+", label: "FINANCE\nPARTNERS" },
@@ -136,7 +137,7 @@ export function HomePage() {
                 onClick={() => setActiveForm("visitor")}
                 className="bg-[#f26522] text-white px-8 py-4 font-bold rounded-md shadow-[0_0_20px_rgba(242,101,34,0.4)] hover:bg-[#d9561c] transition-all flex items-center justify-center text-lg tracking-wide hover:-translate-y-1"
               >
-                REGISTER NOW <ChevronRight className="ml-2 w-5 h-5" />
+                PRE-REGISTRATION <ChevronRight className="ml-2 w-5 h-5" />
               </button>
               <button
                 type="button"
@@ -237,7 +238,7 @@ export function HomePage() {
             <h3 className="uppercase font-bold text-gray-800 tracking-widest text-sm mb-10">THE EXPO WILL BE SPREAD IN</h3>
             <div className="grid grid-cols-3 gap-2 md:gap-4 divide-x divide-gray-300">
               <div className="flex flex-col items-center justify-center p-2">
-                <div className="text-4xl md:text-5xl font-black text-[#f26522] mb-3">4</div>
+                <div className="text-4xl md:text-5xl font-black text-[#f26522] mb-3">6</div>
                 <div className="text-xs uppercase font-bold text-gray-700 whitespace-pre-line">EXPO HALLS</div>
               </div>
               <div className="flex flex-col items-center justify-center p-2">
@@ -245,7 +246,7 @@ export function HomePage() {
                 <div className="text-xs uppercase font-bold text-gray-700 whitespace-pre-line">{"PAVILIONS\nPER EXPO HALL"}</div>
               </div>
               <div className="flex flex-col items-center justify-center p-2">
-                <div className="text-4xl md:text-5xl font-black text-[#f26522] mb-3">40</div>
+                <div className="text-4xl md:text-5xl font-black text-[#f26522] mb-3">60</div>
                 <div className="text-xs uppercase font-bold text-gray-700 whitespace-pre-line">{"PAVILIONS\nIN TOTAL"}</div>
               </div>
             </div>
@@ -387,7 +388,7 @@ export function HomePage() {
           {/* Footer Bottom Line */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 pb-12">
             <div className="text-2xl font-extrabold tracking-tight flex items-center">
-              <span className="text-[#0a1121]">Digital</span><span className="text-[#f26522]">Broker</span>
+              <span className="text-[#0a1121] font-black">Digital</span><span className="text-[#f26522] font-black">Broker</span>
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 text-sm font-semibold text-gray-700">

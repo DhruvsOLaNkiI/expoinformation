@@ -1,4 +1,4 @@
-import { Calendar, Clock, MonitorSmartphone, Users } from "lucide-react";
+import { Calendar, Clock, MonitorSmartphone, Users, Phone, Mail } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -16,21 +16,51 @@ export function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 space-y-6 text-gray-700 text-base md:text-lg leading-relaxed">
-            <p>
-              DBEXPO is a Discovery platform, designed to replicate Property Expos, eliminating the need for
-              physically reaching out to different Real estate projects.
-            </p>
-            <p>
-              DB EXPO creates an immersive and interactive environment, where home buyers / investors can explore
-              various real estate projects &amp; services under one{" "}
-              <span className="italic text-[#0a1121] font-medium">&quot;Virtual Roof&quot;</span>, whether they are
-              real estate projects or Finance Partners.
-            </p>
-            <p>
-              DB Expo is coming up with its first ever virtual expo in the month of July 2026, Called &quot;Virtual
-              Property Expo - 2026.&quot;
-            </p>
+          <div className="lg:col-span-2 space-y-6 text-gray-700 text-base md:text-lg leading-relaxed flex flex-col justify-between">
+            <div className="space-y-6">
+              <p>
+                DBEXPO is a Discovery platform, designed to replicate Property Expos, eliminating the need for
+                physically reaching out to different Real estate projects.
+              </p>
+              <p>
+                DB EXPO creates an immersive and interactive environment, where home buyers / investors can explore
+                various real estate projects &amp; services under one{" "}
+                <span className="italic text-[#0a1121] font-medium">&quot;Virtual Roof&quot;</span>, whether they are
+                real estate projects or Finance Partners.
+              </p>
+              <p>
+                DB Expo is coming up with its first ever virtual expo in the month of July 2026, Called &quot;Virtual
+                Property Expo - 2026.&quot;
+              </p>
+            </div>
+
+            <div className="pt-6 flex flex-wrap gap-x-8 gap-y-4 border-t border-gray-100 mt-4">
+              <a
+                href="tel:+918851686642"
+                className="flex items-center gap-3 text-gray-700 hover:text-[#f26522] font-semibold transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#f26522]/10 flex items-center justify-center text-[#f26522] group-hover:bg-[#f26522] group-hover:text-white transition-all">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Phone</p>
+                  <p className="text-base font-black">+91 88516 86642</p>
+                </div>
+              </a>
+
+              <a
+                href="mailto:marketing@digitalbroker.in"
+                className="flex items-center gap-3 text-gray-700 hover:text-[#f26522] font-semibold transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#f26522]/10 flex items-center justify-center text-[#f26522] group-hover:bg-[#f26522] group-hover:text-white transition-all">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Email</p>
+                  <p className="text-base font-black">marketing@digitalbroker.in</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="bg-[#f8f9fa] rounded-3xl p-8 border border-gray-200 shadow-inner">
@@ -39,7 +69,7 @@ export function AboutSection() {
             </h3>
             <div className="grid grid-cols-3 gap-4 divide-x divide-gray-300 text-center">
               <div className="px-2">
-                <div className="text-4xl font-black text-[#f26522] mb-2">4</div>
+                <div className="text-4xl font-black text-[#f26522] mb-2">6</div>
                 <div className="text-xs uppercase font-bold text-gray-700 leading-tight">Expo Halls</div>
               </div>
               <div className="px-2">
@@ -51,7 +81,7 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="px-2">
-                <div className="text-4xl font-black text-[#f26522] mb-2">40</div>
+                <div className="text-4xl font-black text-[#f26522] mb-2">60</div>
                 <div className="text-xs uppercase font-bold text-gray-700 leading-tight">
                   Pavilions
                   <br />

@@ -36,8 +36,9 @@ export function PrivacyPolicy() {
             <h3 className="font-bold text-[#0a1121] text-lg mb-2">Form delivery &amp; third parties</h3>
             <p>
               Form submissions are sent securely through our form service provider (Web3Forms) to deliver your details
-              to our team by email. Web3Forms may process data according to their own privacy policy. We do not sell
-              your personal information to third parties.
+              to our team by email. Web3Forms may process data according to their own privacy policy. We shall share
+              your data with exhibitors participating in the Digital Expo for property-related communication, offers,
+              and business opportunities.
             </p>
           </div>
 

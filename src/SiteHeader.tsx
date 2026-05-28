@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { Logo } from "./Logo";
 
 type SiteHeaderProps = {
   variant?: "dark" | "light";
@@ -25,8 +26,7 @@ export function SiteHeader({ variant = "dark", className = "" }: SiteHeaderProps
         to="/"
         className="text-2xl md:text-4xl font-extrabold tracking-tight flex items-center justify-self-start"
       >
-        <span className={isDark ? "text-white" : "text-[#0a1121]"}>Digital</span>
-        <span className="text-[#f26522]">Broker</span>
+        <span className={isDark ? "text-white font-black" : "text-[#0a1121] font-black"}>Digital</span><span className="text-[#f26522] font-black">Broker</span>
       </Link>
 
       <nav className="flex items-center justify-center gap-6 md:gap-8 justify-self-center">

@@ -252,9 +252,7 @@ function VisitorForm({ onClose }: { onClose: () => void }) {
         <select id="interestType" name="interestType" required className={inputClass} defaultValue="Home Buyer">
           <option>Home Buyer</option>
           <option>Investor</option>
-          <option>Channel Partner</option>
-          <option>Finance Partner</option>
-          <option>Other</option>
+          <option>Brokers</option>
         </select>
       </div>
 
@@ -286,6 +284,7 @@ function VisitorForm({ onClose }: { onClose: () => void }) {
 function ExhibitorForm({ onClose }: { onClose: () => void }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
+  const [selectedCompanyType, setSelectedCompanyType] = useState("Developer");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -299,7 +298,13 @@ function ExhibitorForm({ onClose }: { onClose: () => void }) {
     try {
       const businessEmail = String(form.get("email") ?? "");
       const phone = String(form.get("phone") ?? "");
-      const companyType = String(form.get("companyType") ?? "");
+      const companyTypeVal = String(form.get("companyType") ?? "");
+      const financePartnerType = String(form.get("financePartnerType") ?? "");
+      
+      const finalCompanyType = companyTypeVal === "Finance Partner" && financePartnerType 
+        ? `Finance Partner (${financePartnerType})` 
+        : companyTypeVal;
+
       const website = String(form.get("website") ?? "");
       const projectsCount = String(form.get("projectsCount") ?? "");
       const boothPreference = String(form.get("boothPreference") ?? "");
@@ -312,7 +317,7 @@ function ExhibitorForm({ onClose }: { onClose: () => void }) {
           contactName,
           email: businessEmail,
           phone,
-          companyType,
+          companyType: finalCompanyType,
           website,
           projectsCount,
           boothPreference,
@@ -325,7 +330,7 @@ function ExhibitorForm({ onClose }: { onClose: () => void }) {
           replyto: businessEmail,
           phone,
           company_name: companyName,
-          company_type: companyType,
+          company_type: finalCompanyType,
           website: website || "-",
           projects_count: projectsCount || "-",
           booth_preference: boothPreference || "-",
@@ -389,14 +394,29 @@ function ExhibitorForm({ onClose }: { onClose: () => void }) {
 
       <div>
         <label className={labelClass} htmlFor="companyType">Company type *</label>
-        <select id="companyType" name="companyType" required className={inputClass} defaultValue="Developer">
+        <select
+          id="companyType"
+          name="companyType"
+          required
+          className={inputClass}
+          value={selectedCompanyType}
+          onChange={(e) => setSelectedCompanyType(e.target.value)}
+        >
           <option>Developer</option>
           <option>Finance Partner</option>
           <option>Channel Partner</option>
-          <option>Service Provider</option>
-          <option>Other</option>
         </select>
       </div>
+
+      {selectedCompanyType === "Finance Partner" && (
+        <div>
+          <label className={labelClass} htmlFor="financePartnerType">Type of Institution *</label>
+          <select id="financePartnerType" name="financePartnerType" required className={inputClass} defaultValue="Bank">
+            <option>Bank</option>
+            <option>NBFC'S</option>
+          </select>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
