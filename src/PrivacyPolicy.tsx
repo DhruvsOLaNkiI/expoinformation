@@ -53,8 +53,8 @@ export function PrivacyPolicy() {
             <h3 className="font-bold text-[#0a1121] text-lg mb-2">Your choices</h3>
             <p>
               You may request access, correction, or deletion of your personal data by contacting us at{" "}
-              <a href="mailto:info@digitalbroker.in" className="text-[#f26522] font-semibold hover:underline">
-                info@digitalbroker.in
+              <a href="mailto:marketing@digitalbroker.in" className="text-[#f26522] font-semibold hover:underline">
+                marketing@digitalbroker.in
               </a>
               .
             </p>
@@ -84,25 +84,14 @@ export function PrivacyPolicy() {
             <ul className="mt-2 space-y-1">
               <li>
                 Email:{" "}
-                <a href="mailto:info@digitalbroker.in" className="text-[#f26522] font-semibold hover:underline">
-                  info@digitalbroker.in
+                <a href="mailto:marketing@digitalbroker.in" className="text-[#f26522] font-semibold hover:underline">
+                  marketing@digitalbroker.in
                 </a>
               </li>
               <li>
                 Phone:{" "}
-                <a href="tel:+919810000775" className="text-[#f26522] font-semibold hover:underline">
-                  +91 98100 00775
-                </a>
-              </li>
-              <li>
-                Website:{" "}
-                <a
-                  href="https://www.digitalbroker.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[#f26522] font-semibold hover:underline"
-                >
-                  www.digitalbroker.in
+                <a href="tel:+918851686642" className="text-[#f26522] font-semibold hover:underline">
+                  +91 88516 86642
                 </a>
               </li>
             </ul>

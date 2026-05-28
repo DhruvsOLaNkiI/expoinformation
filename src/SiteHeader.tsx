@@ -29,9 +29,15 @@ export function SiteHeader({ variant = "dark", className = "" }: SiteHeaderProps
         <span className="text-[#f26522]">Broker</span>
       </Link>
 
-      <nav className="flex items-center justify-center gap-6 md:gap-10 justify-self-center">
+      <nav className="flex items-center justify-center gap-6 md:gap-8 justify-self-center">
         <NavLink to="/about" className={linkClass}>
           About Us
+        </NavLink>
+        <NavLink to="/exhibitions" className={linkClass}>
+          Upcoming Exhibitions
+        </NavLink>
+        <NavLink to="/gallery" className={linkClass}>
+          Gallery
         </NavLink>
         <NavLink to="/privacy-policy" className={linkClass}>
           Privacy Policy

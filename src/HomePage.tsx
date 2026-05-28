@@ -161,9 +161,13 @@ export function HomePage() {
             {/* Laptop / monitor */}
             <div className="relative w-full max-w-[650px] aspect-[16/10] bg-[#0d172e] rounded-t-2xl border-x-[6px] border-t-[6px] border-gray-800 shadow-[0_30px_60px_rgba(0,0,0,0.8)] p-2 flex flex-col overflow-hidden z-10 transition-transform hover:scale-[1.02] duration-500">
               <div className="relative z-10 w-full h-full border border-white/10 rounded overflow-hidden bg-[#0a1121]">
-                <img
-                  src="/hero/monitor-screen.png"
-                  alt="Virtual Property Expo — Crown Estates hall"
+                <video
+                  src="/video/EXPO Video.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
@@ -387,14 +391,11 @@ export function HomePage() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 text-sm font-semibold text-gray-700">
-               <a href="tel:+919810000775" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
-                  <Phone className="w-4 h-4 text-[#f26522]"/> +91 98100 00775
+               <a href="tel:+918851686642" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
+                  <Phone className="w-4 h-4 text-[#f26522]"/> +91 88516 86642
                </a>
-               <a href="mailto:info@digitalbroker.in" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
-                  <Mail className="w-4 h-4 text-[#f26522]"/> info@digitalbroker.in
-               </a>
-               <a href="https://www.digitalbroker.in" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
-                  <Globe className="w-4 h-4 text-[#f26522]"/> www.digitalbroker.in
+               <a href="mailto:marketing@digitalbroker.in" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
+                  <Mail className="w-4 h-4 text-[#f26522]"/> marketing@digitalbroker.in
                </a>
             </div>
           </div>
