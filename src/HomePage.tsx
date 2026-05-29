@@ -39,7 +39,7 @@ const whyReasons = [
 ];
 
 const bottomStats = [
-  { id: 1, icon: Users, value: "500+", label: "EXPECTED\nVISITORS" },
+  { id: 1, icon: Users, value: "5000+", label: "EXPECTED\nVISITORS" },
   { id: 2, icon: Home, value: "60", label: "PAVILIONS" },
   { id: 3, icon: Building2, value: "100+", label: "PROJECTS" },
   { id: 4, icon: Briefcase, value: "50+", label: "DEVELOPERS" },
@@ -223,7 +223,7 @@ export function HomePage() {
           <div className="py-6 px-4 md:px-8 flex items-center gap-4 group">
             <Users className="w-10 h-10 text-[#f26522] flex-shrink-0 group-hover:scale-110 transition-transform" />
             <div>
-              <p className="text-white font-bold tracking-wide">500+</p>
+              <p className="text-white font-bold tracking-wide">5000+</p>
               <p className="text-gray-400 text-xs mt-1">Expected Visitors</p>
             </div>
           </div>

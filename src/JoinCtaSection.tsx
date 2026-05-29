@@ -40,7 +40,7 @@ export function JoinCtaSection({ onRegister }: JoinCtaSectionProps) {
               <div className="text-xs text-gray-400 uppercase tracking-widest">2026 Launch</div>
             </div>
             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-              <div className="text-2xl font-black text-[#f26522] mb-1">500+</div>
+              <div className="text-2xl font-black text-[#f26522] mb-1">5000+</div>
               <div className="text-xs text-gray-400 uppercase tracking-widest">Expected Visitors</div>
             </div>
           </div>
