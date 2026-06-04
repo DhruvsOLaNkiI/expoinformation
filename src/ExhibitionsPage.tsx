@@ -19,27 +19,27 @@ export function ExhibitionsPage() {
 
   const blurredExhibitions = [
     {
-      id: "virtual-digital-expo-gurugram",
-      title: "Virtual Property Expo (Gurugram)",
-      location: "Gurugram (Virtual)",
+      id: "virtual-digital-expo-noida-1",
+      title: "Virtual Property Expo (Noida)",
+      location: "Noida (Virtual)",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
     },
     {
-      id: "virtual-digital-expo-mumbai",
-      title: "Premium Property Expo (Mumbai)",
-      location: "Mumbai (Virtual)",
+      id: "virtual-digital-expo-noida-2",
+      title: "Premium Property Expo (Noida)",
+      location: "Noida (Virtual)",
       image: "https://images.unsplash.com/photo-1562618956-4308528a2a8e?q=80&w=800&auto=format&fit=crop",
     },
     {
-      id: "virtual-digital-expo-bengaluru",
-      title: "Digital Metro Expo (Bengaluru)",
-      location: "Bengaluru (Virtual)",
+      id: "virtual-digital-expo-noida-3",
+      title: "Digital Metro Expo (Noida)",
+      location: "Noida (Virtual)",
       image: "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=800&auto=format&fit=crop",
     },
     {
-      id: "virtual-digital-expo-pune",
-      title: "Elite Estates Show (Pune)",
-      location: "Pune (Virtual)",
+      id: "virtual-digital-expo-noida-4",
+      title: "Elite Estates Show (Noida)",
+      location: "Noida (Virtual)",
       image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800&auto=format&fit=crop",
     }
   ];

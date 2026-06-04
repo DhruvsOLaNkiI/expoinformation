@@ -161,15 +161,11 @@ export function HomePage() {
           <div className="hidden lg:flex w-full justify-end relative h-[500px] items-center">
             {/* Laptop / monitor */}
             <div className="relative w-full max-w-[650px] aspect-[16/10] bg-[#0d172e] rounded-t-2xl border-x-[6px] border-t-[6px] border-gray-800 shadow-[0_30px_60px_rgba(0,0,0,0.8)] p-2 flex flex-col overflow-hidden z-10 transition-transform hover:scale-[1.02] duration-500">
-              <div className="relative z-10 w-full h-full border border-white/10 rounded overflow-hidden bg-[#0a1121]">
-                <video
-                  src="/video/EXPO Video.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+              <div className="relative z-10 w-full h-full border border-white/10 rounded overflow-hidden bg-white">
+                <img
+                  src="/image.png"
+                  alt="DB Expo on desktop"
+                  className="absolute inset-0 w-full h-full object-contain object-center"
                 />
               </div>
             </div>
@@ -251,7 +247,7 @@ export function HomePage() {
               </div>
             </div>
           </div>
-          
+
           {/* Right Hall Cards Block */}
           <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-4">
             {hallCards.map(({ num, label, img }) => (
@@ -316,7 +312,7 @@ export function HomePage() {
             {attendees.map(a => (
               <div key={a.id} className="flex flex-col items-center text-center">
                 <div className="w-20 h-20 bg-[#121d36] rounded-2xl flex items-center justify-center mb-6 shadow-xl border border-white/5 hover:-translate-y-2 transition-transform duration-300 cursor-default">
-                   <a.icon className="w-10 h-10 text-[#f26522]" strokeWidth={1.5} />
+                  <a.icon className="w-10 h-10 text-[#f26522]" strokeWidth={1.5} />
                 </div>
                 <h4 className="text-[#f26522] font-bold uppercase tracking-widest mb-4 text-sm">{a.title}</h4>
                 <p className="text-sm text-gray-400 leading-relaxed max-w-[200px]">
@@ -354,30 +350,30 @@ export function HomePage() {
         <div className="max-w-[1400px] mx-auto">
           {/* Bottom Stats Row */}
           <div className="flex flex-wrap lg:flex-nowrap justify-between gap-8 mb-16 items-start lg:items-center">
-            
+
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6 flex-1 w-full lg:w-auto pr-0 lg:pr-12">
-               {bottomStats.map(stat => (
-                 <div key={stat.id} className="flex items-center gap-4">
-                   <stat.icon className="w-10 h-10 md:w-12 md:h-12 text-[#f26522] flex-shrink-0" strokeWidth={1} />
-                   <div>
-                     <div className="text-2xl md:text-3xl font-black text-[#0a1121] mb-1 leading-none">{stat.value}</div>
-                     <div className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest whitespace-pre-line leading-tight">
-                        {stat.label}
-                     </div>
-                   </div>
-                 </div>
-               ))}
+              {bottomStats.map(stat => (
+                <div key={stat.id} className="flex items-center gap-4">
+                  <stat.icon className="w-10 h-10 md:w-12 md:h-12 text-[#f26522] flex-shrink-0" strokeWidth={1} />
+                  <div>
+                    <div className="text-2xl md:text-3xl font-black text-[#0a1121] mb-1 leading-none">{stat.value}</div>
+                    <div className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest whitespace-pre-line leading-tight">
+                      {stat.label}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Stay Connected Box */}
             <div className="bg-[#0a1121] text-white p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center min-w-[280px] w-full lg:w-auto shadow-2xl">
-               <h4 className="text-sm font-bold uppercase tracking-widest mb-6">STAY CONNECTED</h4>
-               <div className="flex gap-6">
-                 <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Facebook className="w-6 h-6" /></a>
-                 <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Linkedin className="w-6 h-6" /></a>
-                 <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Instagram className="w-6 h-6" /></a>
-                 <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Youtube className="w-6 h-6" /></a>
-               </div>
+              <h4 className="text-sm font-bold uppercase tracking-widest mb-6">STAY CONNECTED</h4>
+              <div className="flex gap-6">
+                <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Facebook className="w-6 h-6" /></a>
+                <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Linkedin className="w-6 h-6" /></a>
+                <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Instagram className="w-6 h-6" /></a>
+                <a href="#" className="hover:-translate-y-1 hover:text-[#f26522] transition-all"><Youtube className="w-6 h-6" /></a>
+              </div>
             </div>
           </div>
         </div>
@@ -392,12 +388,12 @@ export function HomePage() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 text-sm font-semibold text-gray-700">
-               <a href="tel:+918851686642" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
-                  <Phone className="w-4 h-4 text-[#f26522]"/> +91 88516 86642
-               </a>
-               <a href="mailto:marketing@digitalbroker.in" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
-                  <Mail className="w-4 h-4 text-[#f26522]"/> marketing@digitalbroker.in
-               </a>
+              <a href="tel:+918851686642" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
+                <Phone className="w-4 h-4 text-[#f26522]" /> +91 88516 86642
+              </a>
+              <a href="mailto:marketing@digitalbroker.in" className="flex items-center gap-2 hover:text-[#f26522] transition-colors">
+                <Mail className="w-4 h-4 text-[#f26522]" /> marketing@digitalbroker.in
+              </a>
             </div>
           </div>
         </div>
